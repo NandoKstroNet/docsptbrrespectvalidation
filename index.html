@@ -86,6 +86,34 @@
 	v::string()->notEmpty()->validate(''); //false input required
 </pre>
 		<h2 id="negating-rule">Negating Rules | Negando Regras</h2>
+        <p>Você pode usar <strong>v::not()</strong> para negar qualquer regra:</p>
+<pre class="prettyprint">
+    v::not(v::int())->validate(10); //false, input must not be integer
+</pre>
+        <h2>Validator Reuse | Reutilização de Validador</h2>
+        <p>Uma vez criado, você pode reutilizar seu validador em qualquer lugar. Lembra <strong>$usernameValidator</strong>?</p>
+<pre class="prettyprint">
+    $usernameValidator->validate('respect');            //true
+    $usernameValidator->validate('alexandre gaigalas'); //false
+    $usernameValidator->validate('#$%');                //false
+</pre>
+    <h2>Informative Exceptions | Exceptions Informativas</h2>
+    <p>Quando algo está errado, o Validation pode dizer o que esta acontecendo exatamente. Para isso usamos o método <strong>assert()</strong> em vez de <strong>validate()</strong></p>
+<pre class="prettyprint">
+    try {
+        $usernameValidator->assert('really messed up screen#name');
+    } catch(\InvalidArgumentException $e) {
+        echo $e->getFullMessage();
+    }
+</pre>
+    <p>A mensagem impressa é exatamente esta, como uma árvore de texto:</p>
+<pre class="prettyprint">
+    \-All of the 3 required rules must pass
+     |-"really messed up screen#name" must contain only letters (a-z) and digits (0-9)
+     |-"really messed up screen#name" must not contain whitespace
+    \-"really messed up screen#name" must have a length between 1 and 15
+</pre>
+    <h2>Getting Messages | </h2>
 </div>
 </body>
 </html>
