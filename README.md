@@ -71,4 +71,57 @@ Nós usamos o validador `v:notEmpty()` prefixado para não permitir a entrada va
 
 ### Negating Rules
 
+Você pode usar  `v::not()` para negar qualquer regra:
+
+    v::not(v::int())->validate(10); //false, input must not be integer
+
+### Validator Reuse
+
+Uma vez criado, você pode reutilizar seu validador em qualquer lugar. Lembra  $usernameValidator?
+
+    $usernameValidator->validate('respect');            //true
+    $usernameValidator->validate('alexandre gaigalas'); //false
+    $usernameValidator->validate('#$%');                //false
+
+### Informative Exceptions
+
+Quando algo está errado, o Validation pode dizer o que esta acontecendo exatamente. Para isso usamos o método `assert()` em vez de `validate()`:
+
+    try {
+        $usernameValidator->assert('really messed up screen#name');
+    } catch(\InvalidArgumentException $e) {
+       echo $e->getFullMessage();
+    }
+
+A mensagem impressa é exatamente esta, como uma árvore de texto:
+
+    \-All of the 3 required rules must pass
+      |-"really messed up screen#name" must contain only letters (a-z) and digits (0-9)
+      |-"really messed up screen#name" must not contain whitespace
+      \-"really messed up screen#name" must have a length between 1 and 15
+
+### Getting Messages
+
+A árvore de texto lançada pela exception é bom, mas inútilizável em um formulário html ou algo mais personalizado. Você pode usar o
+`findMessages()` para isso:
+
+    try {
+        $usernameValidator->assert('really messed up screen#name');
+    } catch(\InvalidArgumentException $e) {
+       var_dump($e->findMessages(array('alnum', 'length', 'noWhitespace')));
+    }
+
+`findMessages()` retorna um array com as mensagens do validadores solicitados.
+
+### Custom Messages
+
+Pegar as mensagens como array é muito legal, mas as vezes você precisa customiza-las para poder apresentar aos usuários. Isto é possivel utilizando o método `findMessages()` assim:
+
+       $errors = $e->findMessages(array(
+            'alnum'        => '{{name}} must contain only letters and digits',
+            'length'       => '{{name}} must not have more than 15 chars',
+            'noWhitespace' => '{{name}} cannot contain spaces'
+        ));
+
+Para todas as mensagens, a variável `{{name}}` e `{{input}}` estão disponiveis para o template.
 ::Continua::

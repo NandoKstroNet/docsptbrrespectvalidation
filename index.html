@@ -90,14 +90,14 @@
 <pre class="prettyprint">
     v::not(v::int())->validate(10); //false, input must not be integer
 </pre>
-        <h2>Validator Reuse | Reutilização de Validador</h2>
+        <h2 id="validator-reuse">Validator Reuse | Reutilização de Validador</h2>
         <p>Uma vez criado, você pode reutilizar seu validador em qualquer lugar. Lembra <strong>$usernameValidator</strong>?</p>
 <pre class="prettyprint">
     $usernameValidator->validate('respect');            //true
     $usernameValidator->validate('alexandre gaigalas'); //false
     $usernameValidator->validate('#$%');                //false
 </pre>
-    <h2>Informative Exceptions | Exceptions Informativas</h2>
+    <h2 id="informative-exceptions">Informative Exceptions | Exceptions Informativas</h2>
     <p>Quando algo está errado, o Validation pode dizer o que esta acontecendo exatamente. Para isso usamos o método <strong>assert()</strong> em vez de <strong>validate()</strong></p>
 <pre class="prettyprint">
     try {
@@ -113,7 +113,26 @@
      |-"really messed up screen#name" must not contain whitespace
     \-"really messed up screen#name" must have a length between 1 and 15
 </pre>
-    <h2>Getting Messages | </h2>
+    <h2 id="getting-messages">Getting Messages | Recebendo mensagens</h2>
+    <p>A árvore de texto lançada pela exception é bom, mas inútilizável em um formulário html ou algo mais personalizado. Você pode usar o <strong>findMessages()</strong> para isso:</p>
+<pre class="prettyprint">
+    try {
+        $usernameValidator->assert('really messed up screen#name');
+    } catch(\InvalidArgumentException $e) {
+        var_dump($e->findMessages(array('alnum', 'length', 'noWhitespace')));
+    }
+</pre>
+    <p><strong>findMessages()</strong> retorna um array com as mensagens do validadores solicitados.</p>
+    <h2 id="custom-messages">Custom Messages | Mensagens Customizadas</h2>
+    <p>Pegar as mensagens como array é muito legal, mas as vezes você precisa customiza-las para poder apresentar aos usuários. Isto é possivel utilizando o método <strong>findMessages()</strong> assim:</p>
+<pre class="prettyprint">
+       $errors = $e->findMessages(array(
+        'alnum'        => '{{name}} must contain only letters and digits',
+        'length'       => '{{name}} must not have more than 15 chars',
+        'noWhitespace' => '{{name}} cannot contain spaces'
+    ));
+</pre>
+    <p>Para todas as mensagens, a variável <strong>{{name}}</strong> e <strong>{{input}}</strong> estão disponiveis para o template.</p>
 </div>
 </body>
 </html>
