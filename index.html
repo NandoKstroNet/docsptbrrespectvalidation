@@ -133,6 +133,104 @@
     ));
 </pre>
     <p>Para todas as mensagens, a variável <strong>{{name}}</strong> e <strong>{{input}}</strong> estão disponiveis para o template.</p>
+    <h2 id="validator-name">Validator Name | Nome do validador</h2>
+    <p>
+        Em <strong> v:: attribute()</strong> e <strong>v::key()</strong>, <strong>{{name}}</strong> é o nome do attribute/key. Você pode customizar um validador usando um nome:</p>
+<pre class="prettyprint">
+    v::date('Y-m-d')->between('1980-02-02', 'now')->setName('Member Since');
+</pre>
+    <h2 id="zendsmfony-validators">Zend/Symfony Validators | Validadores Zend/Symfony</h2>
+    <p>É possivel utilizar também validadores de outros frameworks, se eles estiverem devidamente instalados:</p>
+<pre class="prettyprint">
+    $hostnameValidator = v::zend('Hostname')->assert('google.com');
+    $timeValidator     = v::sf('Time')->assert('22:00:01');
+</pre>
+    <h2 id="validation-methods">Validation Methods | Métodos de Validação</h2>
+    <p>Já vimos o <strong>Validate()</strong> que retorna <strong>true ou false</strong> e <strong>SecurityTestClass</strong> que lança um relatório de validação completa. Há também um método chamado <strong>check()</strong> que retorna uma exceção com o primeiro erro encontrado apenas:</p>
+<pre class="prettyprint">
+    try {
+        $usernameValidator->check('really messed up screen#name');
+    } catch(\InvalidArgumentException $e) {
+       echo $e->getMainMessage();
+    }
+</pre>
+    <p>Mensagem:</p>
+<pre class="prettyprint">
+    "really messed up screen#name" must contain only letters (a-z) and digits (0-9)
+</pre>
+    <h2 id="reference">Reference | Referência</h2>
+    <h2 id="types">Types | Tipos</h2>
+    <p>
+        <ul>
+            <li></li>
+        </ul>
+    </p>
+    <h2 id="generics">Generics | Genéricos</h2>
+    <p>
+        <ul>
+            <li></li>
+        </ul>
+    </p>    
+    <h2 id="comparing-values">Comparing Values | Comparando Valores</h2>
+    <p>
+        <ul>
+            <li></li>
+        </ul>
+    </p>    
+    <h2 id="numeric">Numeric</h2>
+    <p>
+        <ul>
+            <li></li>
+        </ul>
+    </p>    
+    <h2 id="string">String</h2>
+    <p>
+        <ul>
+            <li></li>
+        </ul>
+    </p>    
+    <h2 id="arrays">Arrays</h2>
+    <p>
+        <ul>
+            <li></li>
+        </ul>
+    </p>    
+    <h2 id="objects">Objects | Objetos</h2>
+    <p>
+        <ul>
+            <li></li>
+        </ul>
+    </p>    
+    <h2 id="date-and-time">Date and Time | Datas e Horas</h2>
+    <p>
+        <ul>
+            <li></li>
+        </ul>
+    </p>    
+    <h2 id="group-validators">Group Validators | Grupo de Validadores</h2>
+    <p>
+        <ul>
+            <li></li>
+        </ul>
+    </p>    
+    <h2 id="regional">Regional</h2>
+    <p>
+        <ul>
+            <li></li>
+        </ul>
+    </p>    
+    <h2 id="files">Files</h2>
+    <p>
+        <ul>
+            <li></li>
+        </ul>
+    </p>    
+    <h2 id="other">Other</h2>
+    <p>
+        <ul>
+            <li></li>
+        </ul>
+    </p>
 </div>
 </body>
 </html>
