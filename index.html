@@ -146,7 +146,7 @@
     $timeValidator     = v::sf('Time')->assert('22:00:01');
 </pre>
     <h2 id="validation-methods">Validation Methods | Métodos de Validação</h2>
-    <p>Já vimos o <strong>Validate()</strong> que retorna <strong>true ou false</strong> e <strong>SecurityTestClass</strong> que lança um relatório de validação completa. Há também um método chamado <strong>check()</strong> que retorna uma exceção com o primeiro erro encontrado apenas:</p>
+    <p>Já vimos o <strong>Validate()</strong> que retorna <strong>true ou false</strong> e <strong>assert()</strong> que lança um relatório de validação completa. Há também um método chamado <strong>check()</strong> que retorna uma exceção com o primeiro erro encontrado apenas:</p>
 <pre class="prettyprint">
     try {
         $usernameValidator->check('really messed up screen#name');
@@ -162,75 +162,222 @@
     <h2 id="types">Types | Tipos</h2>
     <p>
         <ul>
-            <li></li>
+            <li>v::arr()</li>
+            <li>v::bool()</li>
+            <li>v::date()</li>
+            <li>v::float()</li>
+            <li>v::hexa() (deprecated)</li>
+            <li>v::instance()</li>
+            <li>v::int()</li>
+            <li>v::nullValue()</li>
+            <li>v::numeric()</li>
+            <li>v::object()</li>
+            <li>v::string()</li>
+            <li>v::xdigit()</li>
         </ul>
     </p>
     <h2 id="generics">Generics | Genéricos</h2>
     <p>
         <ul>
-            <li></li>
+            <li>v::call()</li>
+            <li>v::callback()</li>
+            <li>v::not()</li>
+            <li>v::when()</li>
+            <li>v::alwaysValid()</li>
+            <li>v::alwaysInvalid()</li>
         </ul>
     </p>    
     <h2 id="comparing-values">Comparing Values | Comparando Valores</h2>
     <p>
         <ul>
-            <li></li>
+            <li>v::between()</li>
+            <li>v::equals()</li>
+            <li>v::max()</li>
+            <li>v::min()</li>
         </ul>
     </p>    
     <h2 id="numeric">Numeric</h2>
     <p>
         <ul>
-            <li></li>
+            <li>v::between()</li>
+            <li>v::bool()</li>
+            <li>v::even()</li>
+            <li>v::float()
+            <li>v::hexa() (deprecated)</li>
+            <li>v::int()</li>
+            <li>v::multiple()</li>
+            <li>v::negative()</li>
+            <li>v::notEmpty()</li>
+            <li>v::numeric()</li>
+            <li>v::odd()</li>
+            <li>v::perfectSquare()</li>
+            <li>v::positive()</li>
+            <li>v::primeNumber()</li>
+            <li>v::roman()</li>
+            <li>v::xdigit()</li>
         </ul>
     </p>    
     <h2 id="string">String</h2>
     <p>
         <ul>
-            <li></li>
+            <li>v::alnum()</li>
+            <li>v::alpha()</li>
+            <li>v::between()</li>
+            <li>v::charset()</li>
+            <li>v::consonants() (deprecated)</li>
+            <li>v::consonant()</li>
+            <li>v::contains()</li>
+            <li>v::cntrl()</li>
+            <li>v::digits() (deprecated)</li>
+            <li>v::digit()</li>
+            <li>v::endsWith()</li>
+            <li>v::in()</li>
+            <li>v::graph()</li>
+            <li>v::length()</li>
+            <li>v::lowercase()</li>
+            <li>v::notEmpty()</li>
+            <li>v::noWhitespace()</li>
+            <li>v::prnt()</li>
+            <li>v::punct()</li>
+            <li>v::regex()</li>
+            <li>v::slug()</li>
+            <li>v::space()</li>
+            <li>v::startsWith()</li>
+            <li>v::uppercase()</li>
+            <li>v::uppercase()</li>
+            <li>v::version()</li>
+            <li>v::vowels() (deprecated)</li>
+            <li>v::vowel()</li>
+            <li>v::xdigit()</li>
         </ul>
     </p>    
     <h2 id="arrays">Arrays</h2>
     <p>
-        <ul>
-            <li></li>
+        <ul> 
+            <li>v::arr()</li>
+            <li>v::contains()</li>
+            <li>v::each()</li>
+            <li>v::endsWith()</li>
+            <li>v::in()</li>
+            <li>v::key()</li>
+            <li>v::length()</li>
+            <li>v::notEmpty()</li>
+            <li>v::startsWith()</li>
         </ul>
     </p>    
     <h2 id="objects">Objects | Objetos</h2>
     <p>
-        <ul>
-            <li></li>
+        <ul> 
+            <li>v::attribute()</li>
+            <li>v::instance()</li>
+            <li>v::length()</li>
         </ul>
     </p>    
     <h2 id="date-and-time">Date and Time | Datas e Horas</h2>
     <p>
         <ul>
-            <li></li>
+            <li>v::between()</li>
+            <li>v::date()</li>
+            <li>v::leapDate()</li>
+            <li>v::leapYear()</li>
         </ul>
     </p>    
     <h2 id="group-validators">Group Validators | Grupo de Validadores</h2>
     <p>
-        <ul>
-            <li></li>
+        <ul>    
+            <li>v::allOf()</li>
+            <li>v::noneOf()</li>
+            <li>v::oneOf()</li>
         </ul>
     </p>    
     <h2 id="regional">Regional</h2>
     <p>
-        <ul>
-            <li></li>
+        <ul>     
+            <li>v::tld()</li>
+            <li>v::countryCode()</li>
         </ul>
     </p>    
     <h2 id="files">Files</h2>
     <p>
         <ul>
-            <li></li>
-        </ul>
+             <li>v::directory()</li>
+             <li>v::exists()</li>
+             <li>v::file()</li>
+             <li>v::readable()</li>
+             <li>v::symbolicLink()</li>
+             <li>v::uploaded()</li>
+             <li>v::writable()</li>
+       </ul>
     </p>    
     <h2 id="other">Other</h2>
     <p>
-        <ul>
-            <li></li>
+        <ul> 
+            <li>v::cnh()</li>
+            <li>v::cnpj()</li>
+            <li>v::cpf()</li>
+            <li>v::domain()</li>
+            <li>v::email()</li>
+            <li>v::ip()</li>
+            <li>v::json()</li>
+            <li>v::macAddress()</li>
+            <li>v::phone()</li>
+            <li>v::sf()</li>
+            <li>v::zend()</li>
         </ul>
     </p>
+    <h2 id="alphabetically">Alphabetically | Alfabético</h2>
+    <h3 id="vallofv1-v2-v3"><strong>v::allOf($v1, $v2, $v3...)</strong></h3>
+    <p>Irá validar se todos os validadores internos forem válidos:</p>
+<pre class="prettyprint">
+    v::allOf(
+        v::int(),
+        v::positive()
+    )->validate(15); //true
+</pre>
+    <p>Isto é semelhante a cadéia, porém sua sintaxe permite definir nomes personalizados para cada nó:</p> 
+<pre class="prettyprint">
+    v::allOf(
+        v::int()->setName('Account Number'),
+        v::positive()->setName('Higher Than Zero')
+    )->setName('Positive integer')
+        ->validate(15); //true
+</pre> 
+    <p>Veja também:</p>
+    <ul>
+        <li>v::oneOf() - Validates if at least one inner rule pass</li>
+        <li>v::noneOf() - Validates if no inner rules pass</li>
+        <li>v::when() - A Ternary validator</li>
+    </ul> 
+    <h2 id="alnum"><strong>v::alnum()</strong></h2> <br>
+    <h3 id="valnumstring-additionalchars"><strong>v::alnum(string $additionalChars)</strong></h3> 
+    <p>Validadores de caracteres alfanumérico de a-Z e 0-9</p> 
+<pre class="prettyprint">
+    v::alnum()->validate('foo 123'); //true
+</pre>
+    <p>Um parâmetro para caracteres extras, também pode ser adicionado:</p>
+<pre class="prettyprint">
+    v::alnum('-')->validate('foo - 123'); //true
+</pre>
+    <p>Este validador permite espaços em branco, caso você queira removê-los, acrescente o método <strong>->noWhitespace() </strong> a cadeia:</p>
+<pre class="prettyprint">
+    v::alnum()->noWhitespace->validate('foo 123'); //false
+</pre>
+    <p>Por default os valores vazios(empty) são aceitos, caso você queira invalidá-los, adicione o método <strong>->notEmpty()</strong> à cadeia:</p>
+<pre class="prettyprint">
+    v::alnum()->notEmpty()->validate(''); //false
+</pre>
+    <p>Você pode restringir os casos usando os validadores <strong>->lowercase()</strong> e <strong>->uppercase()</strong>:</p>
+<pre class="prettyprint">
+    v::alnum()->uppercase()->validate('aaa'); //false
+</pre>
+    <p>Template message para este validador inclui <strong>{{additionalChars}}</strong> com uma cadéia de caracteres passadas como parâmetros.</p>
+    <p>Veja também:</p>
+    <ul>
+        <li>v::alpha() - a-Z, empty or whitespace only</li>
+        <li>v::digit() - 0-9, empty or whitespace only</li>
+        <li>v::consonant()</li>
+        <li>v::vowel()</li>
+    </ul>
 </div>
 </body>
 </html>
